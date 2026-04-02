@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
 
 const NAV_LINKS = [
   { label: 'Work',    href: '/#projects', isRoute: false },
@@ -61,17 +62,26 @@ export default function Navbar() {
 
       </div>
 
-      {/* Mobile menu — placeholder, se anima en Task 2 */}
-      {isOpen && (
-        <nav
-          className="md:hidden bg-surface border-t border-surface px-6 py-4 flex flex-col gap-5"
-          aria-label="Mobile navigation"
-        >
-          {NAV_LINKS.map(({ label, href, isRoute }) => (
-            <NavLink key={label} label={label} href={href} isRoute={isRoute} onClick={() => setIsOpen(false)} />
-          ))}
-        </nav>
-      )}
+      {/* Mobile menu — animated with Framer Motion */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.nav
+            key="mobile-menu"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.25, ease: 'easeInOut' }}
+            className="md:hidden overflow-hidden bg-surface border-t border-surface"
+            aria-label="Mobile navigation"
+          >
+            <div className="px-6 py-4 flex flex-col gap-5">
+              {NAV_LINKS.map(({ label, href, isRoute }) => (
+                <NavLink key={label} label={label} href={href} isRoute={isRoute} onClick={() => setIsOpen(false)} />
+              ))}
+            </div>
+          </motion.nav>
+        )}
+      </AnimatePresence>
     </header>
   )
 }
