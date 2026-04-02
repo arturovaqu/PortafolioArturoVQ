@@ -4,9 +4,9 @@ import { Menu, X } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const NAV_LINKS = [
-  { label: 'Work',    href: '/#projects', isRoute: false },
-  { label: 'About',  href: '/about',      isRoute: true  },
-  { label: 'Contact', href: '/#contact',  isRoute: false },
+  { label: 'Work',    href: '/work',      isRoute: true  },
+  { label: 'About',  href: '/about',     isRoute: true  },
+  { label: 'Contact', href: '/#contact', isRoute: false },
 ]
 
 function NavLink({ label, href, isRoute, onClick }) {
