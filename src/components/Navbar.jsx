@@ -3,10 +3,18 @@ import { Link } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
 
 const NAV_LINKS = [
-  { label: 'Work',    href: '/#projects' },
-  { label: 'About',  href: '/about'      },
-  { label: 'Contact', href: '/#contact'  },
+  { label: 'Work',    href: '/#projects', isRoute: false },
+  { label: 'About',  href: '/about',      isRoute: true  },
+  { label: 'Contact', href: '/#contact',  isRoute: false },
 ]
+
+function NavLink({ label, href, isRoute, onClick }) {
+  const cls = 'text-foreground text-sm hover:text-primary transition-colors duration-200'
+  if (isRoute) {
+    return <Link to={href} className={cls} onClick={onClick}>{label}</Link>
+  }
+  return <a href={href} className={cls} onClick={onClick}>{label}</a>
+}
 
 export default function Navbar() {
   const [isOpen,   setIsOpen]   = useState(false)
@@ -36,14 +44,8 @@ export default function Navbar() {
 
         {/* Desktop links */}
         <nav className="hidden md:flex items-center gap-8" aria-label="Primary navigation">
-          {NAV_LINKS.map(({ label, href }) => (
-            <a
-              key={label}
-              href={href}
-              className="text-foreground text-sm hover:text-primary transition-colors duration-200"
-            >
-              {label}
-            </a>
+          {NAV_LINKS.map(({ label, href, isRoute }) => (
+            <NavLink key={label} label={label} href={href} isRoute={isRoute} />
           ))}
         </nav>
 
@@ -65,15 +67,8 @@ export default function Navbar() {
           className="md:hidden bg-surface border-t border-surface px-6 py-4 flex flex-col gap-5"
           aria-label="Mobile navigation"
         >
-          {NAV_LINKS.map(({ label, href }) => (
-            <a
-              key={label}
-              href={href}
-              className="text-foreground text-sm hover:text-primary transition-colors duration-200"
-              onClick={() => setIsOpen(false)}
-            >
-              {label}
-            </a>
+          {NAV_LINKS.map(({ label, href, isRoute }) => (
+            <NavLink key={label} label={label} href={href} isRoute={isRoute} onClick={() => setIsOpen(false)} />
           ))}
         </nav>
       )}
