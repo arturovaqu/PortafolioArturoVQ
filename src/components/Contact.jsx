@@ -75,6 +75,21 @@ export default function Contact() {
       return
     }
 
+    // 3. Email notification via FormSubmit
+    await fetch('https://formsubmit.co/ajax/arturovaqu.06@gmail.com', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: JSON.stringify({
+        Nombre: name,
+        Email: email,
+        Concepto: subject,
+        Mensaje: message,
+      }),
+    })
+
     setLastSubmitTime(Date.now())
     setStatus('success')
     setFields(EMPTY)
