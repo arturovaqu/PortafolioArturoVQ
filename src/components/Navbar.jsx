@@ -1,16 +1,23 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const NAV_LINKS = [
-  { label: 'Work',    href: '/work',      isRoute: true  },
-  { label: 'About',  href: '/about',     isRoute: true  },
-  { label: 'Contact', href: '/#contact', isRoute: false },
+  { label: 'Work',    href: '/work',   isRoute: true    },
+  { label: 'About',  href: '/about',  isRoute: true    },
+  { label: 'Contact', href: null,     isContact: true  },
 ]
 
-function NavLink({ label, href, isRoute, onClick }) {
+function NavLink({ label, href, isRoute, isContact, onClick, onContact }) {
   const cls = 'text-foreground text-sm hover:text-primary transition-colors duration-200'
+  if (isContact) {
+    return (
+      <button className={cls} onClick={() => { onContact(); onClick?.() }}>
+        {label}
+      </button>
+    )
+  }
   if (isRoute) {
     return <Link to={href} className={cls} onClick={onClick}>{label}</Link>
   }
@@ -20,12 +27,28 @@ function NavLink({ label, href, isRoute, onClick }) {
 export default function Navbar() {
   const [isOpen,   setIsOpen]   = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const location = useLocation()
+  const navigate = useNavigate()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10)
     window.addEventListener('scroll', onScroll)
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
+
+  function scrollToContact() {
+    const doScroll = () => {
+      const el = document.getElementById('contact')
+      if (el) el.scrollIntoView({ behavior: 'smooth' })
+    }
+    if (location.pathname !== '/') {
+      navigate('/')
+      // wait for navigation + render before scrolling
+      setTimeout(doScroll, 100)
+    } else {
+      doScroll()
+    }
+  }
 
   return (
     <header
@@ -45,8 +68,8 @@ export default function Navbar() {
 
         {/* Desktop links */}
         <nav className="hidden md:flex items-center gap-8" aria-label="Primary navigation">
-          {NAV_LINKS.map(({ label, href, isRoute }) => (
-            <NavLink key={label} label={label} href={href} isRoute={isRoute} />
+          {NAV_LINKS.map(({ label, href, isRoute, isContact }) => (
+            <NavLink key={label} label={label} href={href} isRoute={isRoute} isContact={isContact} onContact={scrollToContact} />
           ))}
         </nav>
 
@@ -75,8 +98,8 @@ export default function Navbar() {
             aria-label="Mobile navigation"
           >
             <div className="px-6 py-4 flex flex-col gap-5">
-              {NAV_LINKS.map(({ label, href, isRoute }) => (
-                <NavLink key={label} label={label} href={href} isRoute={isRoute} onClick={() => setIsOpen(false)} />
+              {NAV_LINKS.map(({ label, href, isRoute, isContact }) => (
+                <NavLink key={label} label={label} href={href} isRoute={isRoute} isContact={isContact} onContact={scrollToContact} onClick={() => setIsOpen(false)} />
               ))}
             </div>
           </motion.nav>

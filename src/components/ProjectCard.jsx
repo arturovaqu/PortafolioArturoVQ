@@ -1,11 +1,18 @@
 import { ExternalLink, Github, ArrowUpRight } from 'lucide-react'
+import { motion } from 'framer-motion'
 
 export default function ProjectCard({ project, index }) {
   const isReversed = index % 2 !== 0
   const { category, title, description, year, role, client, liveDemo, github, viewProject } = project
 
   return (
-    <article className="border-t border-surface py-10 md:py-14">
+    <motion.article
+      className="border-t border-surface py-10 md:py-14"
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
+    >
       <div
         className={`flex flex-col gap-8 md:gap-12 ${
           isReversed ? 'md:flex-row-reverse' : 'md:flex-row'
@@ -63,39 +70,45 @@ export default function ProjectCard({ project, index }) {
           {/* Action links */}
           <div className="flex items-center gap-6 flex-wrap">
             {liveDemo && (
-              <a
+              <motion.a
                 href={liveDemo}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 text-foreground text-xs uppercase tracking-widest border-b border-transparent hover:text-primary hover:border-primary transition-colors pb-0.5"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
                 Live Demo <ExternalLink size={11} />
-              </a>
+              </motion.a>
             )}
             {github && (
-              <a
+              <motion.a
                 href={github}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 text-foreground text-xs uppercase tracking-widest border-b border-transparent hover:text-primary hover:border-primary transition-colors pb-0.5"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
                 See on GitHub <Github size={11} />
-              </a>
+              </motion.a>
             )}
             {viewProject && (
-              <a
+              <motion.a
                 href={viewProject}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 text-foreground text-xs uppercase tracking-widest border-b border-transparent hover:text-primary hover:border-primary transition-colors pb-0.5"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
                 View Project <ArrowUpRight size={11} />
-              </a>
+              </motion.a>
             )}
           </div>
         </div>
 
       </div>
-    </article>
+    </motion.article>
   )
 }
