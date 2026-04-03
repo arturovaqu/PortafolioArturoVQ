@@ -15,11 +15,13 @@ const inputCls =
   'transition-colors placeholder:text-muted'
 
 const EMPTY = { name: '', email: '', subject: '', message: '' }
+const RATE_LIMIT_MS = 60_000
 
 export default function Contact() {
   const [fields, setFields] = useState(EMPTY)
   const [status, setStatus] = useState('idle') // 'idle' | 'sending' | 'success' | 'error'
   const [errorMsg, setErrorMsg] = useState('')
+  const [lastSubmitTime, setLastSubmitTime] = useState(null)
 
   function handleChange(e) {
     setFields(prev => ({ ...prev, [e.target.name]: e.target.value }))
@@ -27,13 +29,28 @@ export default function Contact() {
 
   async function handleSubmit(e) {
     e.preventDefault()
+
+    // Rate limit check
+    if (lastSubmitTime && Date.now() - lastSubmitTime < RATE_LIMIT_MS) {
+      const remaining = Math.ceil((RATE_LIMIT_MS - (Date.now() - lastSubmitTime)) / 1000)
+      setStatus('error')
+      setErrorMsg(`Por favor, espera ${remaining} segundos antes de enviar otro mensaje.`)
+      return
+    }
+
     setStatus('sending')
     setErrorMsg('')
+
+    // Sanitize inputs
+    const name    = fields.name.trim()
+    const email   = fields.email.trim()
+    const subject = fields.subject.trim()
+    const message = fields.message.trim()
 
     // 1. Insert user — get back the generated id
     const { data: userData, error: userError } = await supabase
       .from('usuarios')
-      .insert({ nombre: fields.name, email: fields.email })
+      .insert({ nombre: name, email })
       .select('id')
       .single()
 
@@ -48,8 +65,8 @@ export default function Contact() {
       .from('mensajes')
       .insert({
         usuario_id: userData.id,
-        concepto: fields.subject,
-        mensaje: fields.message,
+        concepto: subject,
+        mensaje: message,
       })
 
     if (msgError) {
@@ -58,6 +75,7 @@ export default function Contact() {
       return
     }
 
+    setLastSubmitTime(Date.now())
     setStatus('success')
     setFields(EMPTY)
   }
