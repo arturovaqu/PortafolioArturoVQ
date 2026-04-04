@@ -24,8 +24,10 @@ export default function Hero() {
           </h1>
 
           <p className="text-muted text-sm md:text-base leading-relaxed mb-8 max-w-sm">
-            A Sydney based front-end developer passionate about building
-            accessible and user friendly websites.
+            A Full-Stack Developer based in Sevilla, 
+            specializing in building highly functional, scalable websites 
+            and web applications with a strong focus on 
+            backend automation and user experience.
           </p>
 
           <div className="flex items-center gap-3 flex-wrap">

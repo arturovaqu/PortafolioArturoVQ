@@ -24,7 +24,8 @@ export default function AboutHero() {
         {/* Right: headline + bio + CTA */}
         <div className="flex-1">
           <p className="text-foreground text-xl md:text-2xl font-semibold leading-snug mb-4">
-            I am a front-end developer based in Sydney. Has Mechanical Engineering background.
+            I am a Full-Stack Developer and Software Engineering student based in Sevilla. Fluent in English and actively expanding my expertise through specialized courses 
+            in Artificial Intelligence. I blend academic computer science foundations with hands-on experience in building modern, automated web applications.
           </p>
           <p className="text-muted text-sm leading-relaxed mb-6">
             I am a front-end developer based in Sydney looking for exciting opportunities. Has

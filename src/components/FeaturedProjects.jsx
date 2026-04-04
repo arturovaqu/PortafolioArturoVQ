@@ -1,41 +1,36 @@
+import { useEffect, useState } from 'react'
 import ProjectCard from './ProjectCard.jsx'
-
-const PROJECTS = [
-  {
-    id: 1,
-    category: 'Conceptual Work',
-    title: 'Promotional landing page for our favorite show',
-    description:
-      'Teamed up with a designer to breathe life into a promotional webpage for our beloved television show. Delivered a fully responsive design with dynamic content capabilities, seamlessly integrating a newsletter feature to keep fans updated with the latest adventures.',
-    year: '2023',
-    role: 'Front-end Developer',
-    liveDemo: '#',
-    github: '#',
-  },
-  {
-    id: 2,
-    title: 'Blog site for World News',
-    description:
-      'Mastered CSS Grid complexities in building an innovative news homepage, navigating intricate design decisions for a seamless user experience. Leveraged the challenge to enhance skills in front-end development.',
-    client: 'World News',
-    year: '2022',
-    role: 'Front-end Developer',
-    viewProject: '#',
-  },
-  {
-    id: 3,
-    category: 'Challenge',
-    title: 'E-commerce product page',
-    description:
-      'Successfully crafted an engaging product page featuring a dynamic lightbox gallery and seamless cart functionality, showcasing proficiency in JavaScript development.',
-    year: '2022',
-    role: 'Front-end Developer',
-    liveDemo: '#',
-    github: '#',
-  },
-]
+import { supabase } from '../lib/supabase'
 
 export default function FeaturedProjects() {
+  const [projects, setProjects] = useState([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    async function fetchProjects() {
+      const { data, error } = await supabase
+        .from('works')
+        .select('*')
+        .order('creado_en', { ascending: true })
+
+      if (error) {
+        console.error('Error fetching projects:', error)
+      } else {
+        // Normalize DB column names to what ProjectCard expects
+        setProjects(
+          data.map((p) => ({
+            ...p,
+            liveDemo: p.demo_link ?? null,
+            github: p.github_link ?? null,
+          }))
+        )
+      }
+      setLoading(false)
+    }
+
+    fetchProjects()
+  }, [])
+
   return (
     <section id="projects" className="max-w-6xl mx-auto px-6 py-16 md:py-24">
 
@@ -52,9 +47,21 @@ export default function FeaturedProjects() {
 
       {/* Cards — last card has no bottom border */}
       <div>
-        {PROJECTS.map((project, index) => (
-          <ProjectCard key={project.id} project={project} index={index} />
-        ))}
+        {loading ? (
+          <div className="animate-pulse flex flex-col gap-10 py-10">
+            {[0, 1, 2].map((i) => (
+              <div key={i} className="border-t border-surface py-10">
+                <div className="h-4 bg-surface rounded w-1/3 mb-4" />
+                <div className="h-3 bg-surface rounded w-2/3 mb-2" />
+                <div className="h-3 bg-surface rounded w-1/2" />
+              </div>
+            ))}
+          </div>
+        ) : (
+          projects.map((project, index) => (
+            <ProjectCard key={project.id} project={project} index={index} />
+          ))
+        )}
       </div>
 
     </section>

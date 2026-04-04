@@ -110,10 +110,10 @@ export default function Contact() {
               <p className="text-muted text-sm">
                 Say hello at{' '}
                 <a
-                  href="mailto:robertgarcia@gmail.com"
+                  href="mailto:arturovaqu.06@gmail.com"
                   className="text-foreground underline decoration-surface hover:text-primary hover:decoration-primary transition-colors"
                 >
-                  robertgarcia@gmail.com
+                  arturovaqu.06@gmail.com
                 </a>
               </p>
               <p className="text-muted text-sm">
