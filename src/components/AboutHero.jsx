@@ -1,6 +1,6 @@
 import { Linkedin, Github } from 'lucide-react'
 import { motion } from 'framer-motion'
-import profilePhoto from '../../design_docs/Images_web/image.jpeg'
+import profilePhoto from '../../design_docs/Images_web/imageH.png'
 
 export default function AboutHero() {
   return (
