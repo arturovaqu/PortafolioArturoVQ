@@ -63,7 +63,7 @@ export default function Navbar() {
           to="/"
           className="text-foreground font-bold uppercase tracking-widest text-sm"
         >
-          Robert Garcia
+          ARTURO VALENCIA
         </Link>
 
         {/* Desktop links */}

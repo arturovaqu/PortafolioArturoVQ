@@ -72,7 +72,7 @@ export default function AboutHero() {
       {/* Full-width photo */}
       <motion.img
         src={profilePhoto}
-        alt="Robert Garcia"
+        alt="ARTURO VALENCIA"
         className="w-full h-80 md:h-[500px] object-cover rounded-3xl shadow-lg"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

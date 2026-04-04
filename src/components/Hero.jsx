@@ -19,7 +19,7 @@ export default function Hero() {
               Hi, I am
             </span>
             <span className="block text-6xl md:text-8xl text-foreground tracking-tight">
-              Robert Garcia.
+              ARTURO VALENCIA.
             </span>
           </h1>
 
@@ -77,7 +77,7 @@ export default function Hero() {
         >
           <img
             src={profilePhoto}
-            alt="Robert Garcia — front-end developer"
+            alt="ARTURO VALENCIA — front-end developer"
             className="w-full h-72 md:h-96 object-cover object-top"
           />
         </motion.div>

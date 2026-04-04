@@ -14,7 +14,7 @@
 
 - Desktop nav: `Navigation.png`, `Navigation-1.png`, `Navigation-2.png`
 - Mobile nav: `HomePageMovil.png` (parte superior)
-- Footer: `HomePage.png` (parte inferior — texto `© 2023 Robert Garcia`, izquierda, color muted)
+- Footer: `HomePage.png` (parte inferior — texto `© 2026 ARTURO VALENCIA`, izquierda, color muted)
 
 ## Paleta usada
 
@@ -34,7 +34,7 @@
 | Archivo | Acción | Responsabilidad |
 |---|---|---|
 | `src/components/Navbar.jsx` | Modificar | Sticky header, logo, links desktop, hamburguesa móvil |
-| `src/components/Footer.jsx` | Modificar | Copyright © 2023 Robert Garcia |
+| `src/components/Footer.jsx` | Modificar | Copyright © 2026 ARTURO VALENCIA |
 | `src/pages/HomePage.jsx` | Sin cambios | Ya importa Navbar y Footer |
 | `src/pages/AboutPage.jsx` | Sin cambios | Ya importa Navbar y Footer |
 
@@ -82,7 +82,7 @@ export default function Navbar() {
           to="/"
           className="text-foreground font-bold uppercase tracking-widest text-sm"
         >
-          Robert Garcia
+          ARTURO VALENCIA
         </Link>
 
         {/* Desktop links */}
@@ -140,7 +140,7 @@ npm run dev
 ```
 
 Verificar en `http://localhost:5173`:
-- Logo `ROBERT GARCIA` aparece a la izquierda en mayúsculas
+- Logo `ARTURO VALENCIA` aparece a la izquierda en mayúsculas
 - Links `Work · About · Contact` aparecen a la derecha
 - Al reducir la ventana a < 768 px, los links desaparecen y aparece el ícono de hamburguesa
 - Al hacer click en hamburguesa, aparecen los 3 enlaces apilados verticalmente
@@ -235,7 +235,7 @@ export default function Footer() {
   return (
     <footer className="bg-background border-t border-surface">
       <div className="max-w-6xl mx-auto px-6 py-6">
-        <p className="text-muted text-sm">© 2023 Robert Garcia</p>
+        <p className="text-muted text-sm">© 2026 ARTURO VALENCIA</p>
       </div>
     </footer>
   )
@@ -245,7 +245,7 @@ export default function Footer() {
 - [ ] **Step 2: Verificar visualmente**
 
 En `http://localhost:5173` hacer scroll hasta el final de la página:
-- El texto `© 2023 Robert Garcia` aparece en color muted (`#94a3b8`)
+- El texto `© 2026 ARTURO VALENCIA` aparece en color muted (`#94a3b8`)
 - Tamaño pequeño (`text-sm`)
 - Alineado a la izquierda dentro del contenedor de 6xl
 - Línea divisoria sutil en la parte superior del footer
@@ -263,12 +263,12 @@ git commit -m "feat: add Footer with copyright text"
 
 ### Spec coverage
 - [x] Navbar sticky → `sticky top-0 z-50`
-- [x] Logo izquierda → `ROBERT GARCIA` uppercase, tracking-widest
+- [x] Logo izquierda → `ARTURO VALENCIA` uppercase, tracking-widest
 - [x] Links derecha → Work / About / Contact, desktop
 - [x] Menú hamburguesa móvil → `Menu` / `X` de lucide-react
 - [x] Animación menú móvil → Framer Motion `AnimatePresence`
 - [x] Colores de paleta → `bg-background`, `bg-surface`, `text-foreground`, `text-primary`, `text-muted`
-- [x] Footer copyright → `© 2023 Robert Garcia`, texto muted, izquierda
+- [x] Footer copyright → `© 2026 ARTURO VALENCIA`, texto muted, izquierda
 - [x] Mobile First → clases `md:` para escalar de móvil a desktop
 
 ### Placeholders

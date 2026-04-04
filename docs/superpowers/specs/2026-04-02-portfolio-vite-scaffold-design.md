@@ -2,7 +2,7 @@
 
 **Date:** 2026-04-02
 **Status:** Approved
-**Project:** Portfolio Clone — Robert Garcia
+**Project:** Portfolio Clone — ARTURO VALENCIA
 
 ---
 

@@ -1,4 +1,4 @@
-# Proyecto: Portfolio Clone - Robert Garcia
+# Proyecto: Portfolio Clone - ARTURO VALENCIA
 Guía de estilo y reglas de desarrollo para el agente.
 
 ## Tech Stack
