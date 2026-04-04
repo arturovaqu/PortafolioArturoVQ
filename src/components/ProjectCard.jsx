@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 
 export default function ProjectCard({ project, index }) {
   const isReversed = index % 2 !== 0
-  const { category, title, description, year, role, client, liveDemo, github, viewProject } = project
+  const { category, title, description, year, role, client, liveDemo, github, viewProject, image_url } = project
 
   return (
     <motion.article
@@ -26,12 +26,19 @@ export default function ProjectCard({ project, index }) {
               {category}
             </p>
           )}
-          {/* Placeholder: swap src prop for actual screenshot once available */}
-          <div className="bg-surface rounded-xl aspect-[4/3] flex items-center justify-center">
-            <span className="text-muted text-xs tracking-wide uppercase">
-              Project screenshot
-            </span>
-          </div>
+          {image_url ? (
+            <img
+              src={image_url}
+              alt={title}
+              className="w-full rounded-xl aspect-[4/3] object-cover"
+            />
+          ) : (
+            <div className="bg-surface rounded-xl aspect-[4/3] flex items-center justify-center">
+              <span className="text-muted text-xs tracking-wide uppercase">
+                Project screenshot
+              </span>
+            </div>
+          )}
         </div>
 
         {/* Text content */}
