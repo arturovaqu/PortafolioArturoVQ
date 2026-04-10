@@ -17,8 +17,11 @@ export default function AboutPreview() {
           {/* Right: bio + link */}
           <div className="flex-1">
             <p className="text-muted text-sm md:text-base leading-relaxed mb-6">
-              I am a front-end developer based in Sydney. Has Mechanical
-              Engineering background.
+              I am a Full-Stack Developer and Software Engineering 
+              student based in Sevilla. Fluent in English and actively 
+              expanding my expertise through specialized courses in Artificial Intelligence. 
+              I blend academic computer science foundations with hands-on experience
+               in building modern, automated web applications.
             </p>
             <Link
               to="/about"
