@@ -1,12 +1,11 @@
 import { useState } from 'react'
-import { Linkedin, Github, Twitter, Instagram } from 'lucide-react'
+import { Linkedin, Github, Instagram } from 'lucide-react'
 import { supabase } from '../lib/supabase'
 
 const SOCIAL_LINKS = [
-  { icon: Linkedin, href: 'https://linkedin.com',  label: 'LinkedIn'  },
-  { icon: Github,   href: 'https://github.com',    label: 'GitHub'    },
-  { icon: Twitter,  href: 'https://twitter.com',   label: 'X'         },
-  { icon: Instagram, href: 'https://instagram.com', label: 'Instagram' },
+  { icon: Linkedin,  href: 'https://www.linkedin.com/in/arturo-valencia-quintero-b07ab43bb/', label: 'LinkedIn'  },
+  { icon: Github,    href: 'https://github.com/arturovaqu',                                   label: 'GitHub'    },
+  { icon: Instagram, href: 'https://www.instagram.com/arturo.v.q/',                           label: 'Instagram' },
 ]
 
 const inputCls =

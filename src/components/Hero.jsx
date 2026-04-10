@@ -44,7 +44,7 @@ export default function Hero() {
 
             {/* LinkedIn */}
             <motion.a
-              href="https://www.linkedin.com"
+              href="https://www.linkedin.com/in/arturo-valencia-quintero-b07ab43bb/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
@@ -57,7 +57,7 @@ export default function Hero() {
 
             {/* GitHub */}
             <motion.a
-              href="https://github.com"
+              href="https://github.com/arturovaqu"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub"

@@ -27,25 +27,9 @@ export default function AboutHero() {
             I am a Full-Stack Developer and Software Engineering student based in Sevilla. Fluent in English and actively expanding my expertise through specialized courses 
             in Artificial Intelligence. I blend academic computer science foundations with hands-on experience in building modern, automated web applications.
           </p>
-          <p className="text-muted text-sm leading-relaxed mb-6">
-            I am a front-end developer based in Sydney looking for exciting opportunities. Has
-            Mechanical Engineering background. I like to focus on accessibility when developing.
-            Passionate and curious about solving problems. Currently, I'm exploring React, Flexbox
-            and a bit of Designing. While I am not programming, I enjoy playing football,
-            photography and playing Valorant. Learning more to improve skill.
-          </p>
-
           <div className="flex items-center gap-4">
             <motion.a
-              href="#"
-              className="inline-flex items-center gap-2 bg-primary text-black text-xs font-bold uppercase tracking-widest px-6 py-3 rounded-full hover:opacity-90 transition-opacity"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Download Resume
-            </motion.a>
-            <motion.a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/arturo-valencia-quintero-b07ab43bb/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
@@ -56,7 +40,7 @@ export default function AboutHero() {
               <Linkedin size={18} />
             </motion.a>
             <motion.a
-              href="https://github.com"
+              href="https://github.com/arturovaqu"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub"
