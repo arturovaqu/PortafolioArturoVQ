@@ -3,17 +3,13 @@ import { motion } from 'framer-motion'
 const EXPERIENCE = [
   {
     role: 'Freelance Developer',
-    company: null,
-    period: 'Nov 2023 – Present',
     description:
-      'Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+      'Designing and developing custom web applications with a focus on clean code, responsive design, and optimal performance. Delivering tailored solutions that meet client requirements and enhance user engagement.',
   },
   {
-    role: 'Front-End Intern',
-    company: 'Ross Tech',
-    period: 'Sep 2023 – Nov 2023',
+    role: 'UI/UX Designer',
     description:
-      'Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+      'Creating intuitive and visually appealing user interfaces. Conducting user research and designing wireframes and prototypes to ensure seamless and engaging user experiences across digital platforms.',
   },
 ]
 
@@ -42,9 +38,6 @@ export default function Experience() {
               >
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 mb-2">
                   <h3 className="text-foreground font-bold text-base">{item.role}</h3>
-                  <span className="text-muted text-xs uppercase tracking-widest whitespace-nowrap">
-                    {item.period}
-                  </span>
                 </div>
                 {item.company && (
                   <p className="text-primary text-sm font-semibold mb-2">{item.company}</p>
