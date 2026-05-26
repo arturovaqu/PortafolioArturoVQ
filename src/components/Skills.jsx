@@ -4,10 +4,12 @@ const SKILLS = [
   'HTML',
   'CSS',
   'JavaScript',
+  'React',
+  'Tailwind CSS',
+  'SQL',
   'jQuery',
   'Accessibility',
   'Figma',
-  'Tailwind CSS',
 ]
 
 export default function Skills() {
